@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = localFont({
@@ -29,12 +28,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} ${spaceGrotesk.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+          <body className={`${inter.className} ${spaceGrotesk.variable} antialiased`}>
+            {children}
+          </body>
+      </html>
   );
 }
