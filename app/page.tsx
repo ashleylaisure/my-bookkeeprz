@@ -1,23 +1,9 @@
 'use client'
-// import { useUser, SignInButton, SignUpButton } from "@clerk/clerk-react";
-// import { useLocation } from "wouter";
-// import { useEffect } from "react";
+
 import { BookOpen, ChartLine, BookMarked, Underline, Search, Target, Check, User, Settings, Star, Users, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {
-  // const { isSignedIn } = useUser();
-  // const [, navigate] = useLocation();
-
-  // useEffect(() => {
-  //   if (isSignedIn) {
-  //     navigate("/dashboard");
-  //   }
-  // }, [isSignedIn, navigate]);
-
-  // if (isSignedIn) {
-  //   return null; // Will redirect to dashboard
-  // }
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
