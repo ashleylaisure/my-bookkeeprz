@@ -15,7 +15,10 @@ const spaceGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Bookkeeprz",
+  title: {
+    default: "Bookkeeprz",
+    template: "%s | Bookkeeprz",
+  },
   description: "Your ultimate bookreading companion",
   icons: {
     icon: '/images/site-logo.svg',
