@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = localFont({
   src: './fonts/Inter-VF.ttf',
@@ -31,10 +32,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
       <html lang="en">
           <body className={`${inter.className} ${spaceGrotesk.variable} antialiased`}>
             {children}
           </body>
       </html>
+    </ClerkProvider>
   );
 }

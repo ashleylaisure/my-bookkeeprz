@@ -2,8 +2,23 @@
 
 import { BookOpen, ChartLine, BookMarked, Underline, Search, Target, Check, User, Settings, Star, Users, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useUser, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { useLocation } from "wouter";
+import { useEffect } from "react";
 
 export default function LandingPage() {
+  const { isSignedIn } = useUser();
+  const [, navigate] = useLocation();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate("/dashboard");
+    }
+  }, [isSignedIn, navigate]);
+
+  if (isSignedIn) {
+    return null; // Will redirect to dashboard
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -19,9 +34,13 @@ export default function LandingPage() {
               <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">How it Works</a>
               <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-
+              <SignInButton>
+              {/* <SignInButton mode="modal"> */}
                 <Button variant="ghost" data-testid="button-signin">Sign In</Button>
+              </SignInButton>
+              <SignUpButton>
                 <Button data-testid="button-signup">Get Started</Button>
+              </SignUpButton>
 
             </div>
             <button className="md:hidden">
@@ -48,9 +67,13 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="px-8 py-4" data-testid="button-start-journey">
-                  Start Reading Journey
-                </Button>
+
+                <SignUpButton>
+                  <Button size="lg" className="px-8 py-4" data-testid="button-start-journey">
+                    Start Reading Journey
+                  </Button>
+                </SignUpButton>
+
                 <Button variant="outline" size="lg" className="px-8 py-4" data-testid="button-watch-demo">
                   Watch Demo
                 </Button>
@@ -307,10 +330,11 @@ export default function LandingPage() {
           <p className="text-xl text-muted-foreground mb-8">
             Join thousands of readers who are already tracking their progress and discovering amazing books.
           </p>
-
-          <Button size="lg" className="px-12 py-4 text-lg" data-testid="button-start-free-account">
-            Start Your Free Account
-          </Button>
+          <SignUpButton>
+            <Button size="lg" className="px-12 py-4 text-lg" data-testid="button-start-free-account">
+              Start Your Free Account
+            </Button>
+          </SignUpButton>
 
           <p className="text-sm text-muted-foreground mt-4">
             Free forever • No credit card required • Cancel anytime
