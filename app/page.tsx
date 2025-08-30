@@ -34,7 +34,7 @@ export default function LandingPage() {
               <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
               <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">How it Works</a>
               <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-              <SignInButton>
+              <SignInButton mode="modal">
               {/* <SignInButton mode="modal"> */}
                 <Button variant="ghost" data-testid="button-signin">Sign In</Button>
               </SignInButton>
