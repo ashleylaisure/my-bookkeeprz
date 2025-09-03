@@ -260,7 +260,7 @@
   .card {
     @apply rounded-xl border border-border bg-card shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:scale-[1.003];
   }
-  
+
   .reading-progress {
     background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 65%, var(--muted) 65%, var(--muted) 100%);
   }
