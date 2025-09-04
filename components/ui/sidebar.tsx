@@ -282,10 +282,12 @@ function SidebarTrigger({
 
       {open 
         ? hovered 
-          ? ( <SidebarCloseIcon /> ) 
+          // ? ( <SidebarCloseIcon /> ) 
+          ? ( <PanelLeftIcon /> )
           : ( <BrandIcon /> )
         : hovered 
-          ? ( <SidebarOpenIcon /> ) 
+          // ? ( <SidebarOpenIcon /> ) 
+          ? ( <PanelLeftIcon className="rotate-180" /> )
           : ( <BrandIcon /> )
       }
 

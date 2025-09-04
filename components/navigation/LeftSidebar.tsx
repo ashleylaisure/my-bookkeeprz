@@ -37,7 +37,7 @@ export default function LeftSidebar() {
     const currentTheme = theme === "system" ? systemTheme : theme
 
     return (
-        <Sidebar collapsible="icon" className="overflow-hidden">
+        <Sidebar collapsible="icon">
             {/* HEADER */}
             <SidebarHeader className="flex-start flex-row min-h-[64px] gap-2">
                 <SidebarTrigger />
@@ -71,7 +71,7 @@ export default function LeftSidebar() {
 
                                     <Avatar className="h-8 w-8 rounded-lg">
                                         {/* <AvatarImage src={user.avatar} alt={user.name} /> */}
-                                        <AvatarImage src="/icons/avatar-15.png" alt="User Avatar" />
+                                        <AvatarImage src="/icons/avatar-15.png" alt="User Avatar" className="invert-colors"/>
                                         <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                                     </Avatar>
 

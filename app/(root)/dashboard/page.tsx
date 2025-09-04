@@ -1,4 +1,3 @@
-import { SignoutBtn } from "@/components/navigation/SignoutLink";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -17,7 +16,6 @@ export default async function DashboardPage() {
     return (
         <div>
             <h1>Dashboard</h1>
-            {/* <SignoutBtn /> */}
         </div>
     )
 }
