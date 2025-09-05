@@ -2,6 +2,7 @@
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { SidebarTrigger } from "../ui/sidebar";
+import BrandText from "../BrandText";
 
 export default function Navbar() {
     const isMobile = useIsMobile();
@@ -11,9 +12,7 @@ export default function Navbar() {
             {isMobile && (
                 <div className="flex-start flex-row gap-2">
                     <SidebarTrigger />
-                    <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">Book
-                        <span className="text-primary-500">keeprz</span>
-                    </p>
+                    <BrandText />
                 </div>
             )}
         </nav>

@@ -22,6 +22,7 @@ import { useEffect, useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
 import { user } from "@/drizzle/schema/auth"
 import { useIsMobile } from "@/hooks/use-mobile"
+import BrandText from "../BrandText"
 
 export default function LeftSidebar() {
     const { theme, setTheme, systemTheme } = useTheme()
@@ -41,8 +42,7 @@ export default function LeftSidebar() {
             {/* HEADER */}
             <SidebarHeader className="flex-start flex-row min-h-[64px] gap-2">
                 <SidebarTrigger />
-                <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900">Book
-                <span className="text-primary-500">keeprz</span></p>
+                <BrandText />
             </SidebarHeader>
             {/* <SidebarSeparator /> */}
 
