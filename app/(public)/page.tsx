@@ -1,44 +1,16 @@
 import { BookOpen, ChartLine, BookMarked, Underline, Search, Target, Check, User, Settings, Star, Users, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getSession } from "@/lib/auth";
-import { redirect } from "next/navigation";
+import Navbar from "./components/Navbar";
+
 
 export default async function LandingPage() {
-  const session = await getSession();
 
-  if(session) redirect("/dashboard");
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <BookOpen className="text-primary text-2xl" />
-              <span className="font-header font-bold text-xl text-primary">Bookkeeprz</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
-              <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">How it Works</a>
-              <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-              <Link href="/sign-in">
-                  <Button variant="ghost" data-testid="button-signin">Sign In</Button>
-              </Link>
-
-              <Link href="/sign-up">
-                  <Button data-testid="button-signup">Get Started</Button>
-              </Link>
-            </div>
-            <button className="md:hidden">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
+      
+      <Navbar />
 
       {/* Hero Section */}
       <section className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">

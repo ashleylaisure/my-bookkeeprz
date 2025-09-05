@@ -4,7 +4,7 @@ import Navbar from "@/components/navigation/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ReactNode } from "react";
 
-export default async function RootLayout({children}: {children: ReactNode}) {
+export default async function PrivateLayout({children}: {children: ReactNode}) {
     const cookieStore = await cookies()
     const defaultOpen = cookieStore.get("sidebar_state")?.value === "true"
 
