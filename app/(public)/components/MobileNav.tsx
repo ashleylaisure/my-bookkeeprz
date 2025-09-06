@@ -40,7 +40,7 @@ export default function MobileNav() {
                 className="background-light900_dark200 border-none p-4"
             >
                 <SheetTitle className="hidden">Navigation</SheetTitle>
-                <Link href="/" className="flex items-center gap-1">
+                <Link href={ROUTES.HOME} className="flex items-center gap-1">
                     <BrandIcon />
                     <BrandText />
                 </Link>

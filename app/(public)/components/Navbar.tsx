@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import MobileNav from "./MobileNav"
 import { useIsMobile } from "@/hooks/use-mobile"
+import ROUTES from "@/constants/routes"
 
 
 export default function Navbar() {
@@ -29,11 +30,11 @@ export default function Navbar() {
                         <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
                         <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</a>
                         
-                        <Link href="/sign-in">
+                        <Link href={ROUTES.SIGN_IN}>
                             <Button variant="ghost" data-testid="button-signin">Sign In</Button>
                         </Link>
 
-                        <Link href="/sign-up">
+                        <Link href={ROUTES.SIGN_UP}>
                             <Button data-testid="button-signup">Get Started</Button>
                         </Link>
                     </div>
