@@ -20,7 +20,7 @@ export const sidebarLinks = [
         icon: TrendingUp
     }, {
         label: 'My Books',
-        route: ROUTES.My_BOOKS,
+        route: ROUTES.MY_BOOKS,
         icon: BookOpen
     }, {
         label: "Authors",

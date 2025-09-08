@@ -4,7 +4,8 @@ const ROUTES = {
     SIGN_UP: '/sign-up',
 
     DASHBOARD: '/dashboard',
-    My_BOOKS: '/my_books',
+    MY_BOOKS: '/my_books',
+    ADD_BOOK: '/add_book',
     AUTHORS: '/authors',
     SEARCH: '/search',
     BOOKSHELVES: '/bookshelves',

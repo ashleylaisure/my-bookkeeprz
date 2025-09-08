@@ -9,13 +9,12 @@ export default function Navbar() {
 
     return (
         <nav className="flex-between background-light900_dark200 sticky top-0 right-0 z-50 w-full gap-5 p-3 min-h-[64px] shadow-light-300 dark:shadow-none">
-            {isMobile && (
+            {/* {isMobile && (
                 <div className="flex-start flex-row gap-2">
                     <SidebarTrigger />
                     <BrandText />
                 </div>
-            )}
+            )} */}
         </nav>
     )
-
 }

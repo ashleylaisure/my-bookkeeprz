@@ -93,8 +93,8 @@ function SidebarProvider({
 
   // Helper to toggle the sidebar.
   const toggleSidebar = React.useCallback(() => {
-    return setOpen((open) => !open)
-  }, [setOpen])
+    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
+    }, [isMobile, setOpen, setOpenMobile])
 
   // Adds a keyboard shortcut to toggle the sidebar.
   React.useEffect(() => {
@@ -267,6 +267,7 @@ function SidebarTrigger({
 }: React.ComponentProps<typeof Button>) {
   const { toggleSidebar, open } = useSidebar()
   const [hovered, setHovered] = useState(false)
+  const { isMobile } = useSidebar()
 
   return (
     <Button
@@ -284,14 +285,10 @@ function SidebarTrigger({
       {...props}
     >
 
-      {open 
-        ? hovered 
-          // ? ( <SidebarCloseIcon /> ) 
-          ? ( <PanelLeftIcon /> )
-          : ( <BrandIcon /> )
+      { isMobile 
+        ? ( <BrandIcon /> ) 
         : hovered 
-          // ? ( <SidebarOpenIcon /> ) 
-          ? ( <PanelLeftIcon className="rotate-180" /> )
+          ? ( <PanelLeftIcon  className="rotate-180"/> )
           : ( <BrandIcon /> )
       }
 
