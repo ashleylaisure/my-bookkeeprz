@@ -1,3 +1,4 @@
+import StatusFilter from '@/components/filters/StatusFilter'
 import LocalSearch from '@/components/search/LocalSearch'
 import { Button } from '@/components/ui/button'
 import ROUTES from '@/constants/routes'
@@ -6,12 +7,16 @@ import Link from 'next/link'
 import React from 'react'
 
 const books = [
-  { id: 1, title: 'Once Upon a Time', author: 'Author 1', genre: 'Fantasy', reviews: 120, rating: 4.5 },
-  { id: 2, title: 'The Great Adventure', author: 'Author 2', genre: 'Adventure', reviews: 85, rating: 4.0 },
-  { id: 3, title: 'Mystery of the Night', author: 'Author 3', genre: 'Mystery', reviews: 200, rating: 4.8 },
-  { id: 4, title: 'Romance in Paris', author: 'Author 4', genre: 'Romance', reviews: 150, rating: 4.3 },
-  { id: 5, title: 'Science Wonders', author: 'Author 5', genre: 'Science', reviews: 95, rating: 4.1 },
-  { id: 6, title: 'Historical Tales', author: 'Author 6', genre: 'History', reviews: 110, rating: 4.4 }
+  { id: 1, title: 'Once Upon a Time', author: 'Author 1', genre: 'Fantasy', reviews: 120, rating: 4.5, status: "want-to-read" },
+  { id: 2, title: 'The Great Adventure', author: 'Author 2', genre: 'Adventure', reviews: 85, rating: 4.0, status: "currently-reading" },
+  { id: 3, title: 'Mystery of the Night', author: 'Author 3', genre: 'Mystery', reviews: 200, rating: 4.8, status: "read" },
+  { id: 4, title: 'Romance in Paris', author: 'Author 4', genre: 'Romance', reviews: 150, rating: 4.3, status: "read" },
+  { id: 5, title: 'Science Wonders', author: 'Author 5', genre: 'Science', reviews: 95, rating: 4.1, status: "read" },
+  { id: 6, title: 'Historical Tales', author: 'Author 6', genre: 'History', reviews: 110, rating: 4.4, status: "dnf" },
+  { id: 7, title: 'Fantasy Realm', author: 'Author 7', genre: 'Fantasy', reviews: 130, rating: 4.6, status: "want-to-read" },
+  { id: 8, title: 'Adventure Awaits', author: 'Author 8', genre: 'Adventure', reviews: 75, rating: 3.9, status: "currently-reading" },
+  { id: 9, title: 'Mystery Unveiled', author: 'Author 9', genre: 'Mystery', reviews: 180, rating: 4.7, status: "read" },
+  { id: 10, title: 'Love Stories', author: 'Author 10', genre: 'Romance', reviews: 140, rating: 4.2, status: "want-to-read" },
 ]
 
 interface SearchParams {
@@ -52,15 +57,8 @@ const MyBooksPage = async ({searchParams}: SearchParams) => {
 
       <p>Filter dropdown for Genre</p>
 
-      <div>Status Filter</div>
+      <StatusFilter books={filteredBooks}/>
 
-      <div className="mt-10 flex w-full flex-col gap-6">
-        {filteredBooks.map((book) => (
-          <div key={book.id} className="flex w-full flex-col rounded-lg border border-dark200_light700 bg-dark50_light950 p-4 shadow-sm">
-            <h2 className="h2-bold text-dark100_light900">{book.title}</h2>
-          </div>
-        ))}
-      </div>
     </>
   )
 }
