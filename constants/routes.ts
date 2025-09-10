@@ -5,6 +5,7 @@ const ROUTES = {
 
     DASHBOARD: '/dashboard',
     MY_BOOKS: '/my_books',
+    BOOK: (ID: string) => `/book/${ID}`,
     ADD_BOOK: '/add_book',
     AUTHORS: '/authors',
     SEARCH: '/search',

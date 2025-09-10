@@ -5,6 +5,9 @@ import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Eye, PenTool, Star } from 'lucide-react';
 import { Button } from '../ui/button';
+import { getTimeStamp } from '@/lib/utils';
+import ROUTES from '@/constants/routes';
+import Link from 'next/link';
 
 
 const BookCard = ({ book }: { book: Books }) => {
@@ -21,9 +24,12 @@ const BookCard = ({ book }: { book: Books }) => {
                         className="w-16 h-24 object-cover rounded shadow-sm group-hover:opacity-75 transition-opacity"
                     />
                     <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-foreground font-crimson truncate group-hover:text-primary transition-colors">{book.title}</h3>
+                        <Link href={ROUTES.BOOK(book.id)}>
+                            <h3 className="font-semibold text-foreground font-crimson truncate group-hover:text-primary transition-colors">{book.title}</h3>
+                        </Link>
                         <p className="text-sm text-muted-foreground truncate">{book.author}</p>
-                    
+                        <p className="text-sm text-muted-foreground truncate">Updated {getTimeStamp(book.createdAt)}</p>
+
                         {book.genre && (
                             <Badge variant="secondary" className="mt-1 text-xs">
                                 {book.genre}
