@@ -1,4 +1,6 @@
+import { relations } from "drizzle-orm";
 import { pgTable, text, timestamp, boolean } from "drizzle-orm/pg-core";
+import { book } from "./book";
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
@@ -45,3 +47,8 @@ export const verification = pgTable("verification", {
   createdAt: timestamp("created_at", {mode: "string"}).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", {mode: "string"}).notNull().defaultNow(),
 });
+
+// user(1) --> book(many)
+export const userRelations = relations(user, ({ many }) => ({
+  books: many(book),
+}));

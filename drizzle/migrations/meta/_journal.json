@@ -8,6 +8,13 @@
       "when": 1756735346182,
       "tag": "0000_watery_bushwacker",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1757620454901,
+      "tag": "0001_steady_the_captain",
+      "breakpoints": true
     }
   ]
 }
