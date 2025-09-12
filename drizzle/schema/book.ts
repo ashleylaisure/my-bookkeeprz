@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, varchar, boolean, serial, pgEnum, uuid } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, timestamp, varchar, boolean, pgEnum, uuid } from "drizzle-orm/pg-core";
 import { user } from "./auth";
 import { genreArray as _genreArray } from "@/constants";
 import { InferSelectModel, relations } from "drizzle-orm";
@@ -51,7 +51,7 @@ export const book = pgTable("book", {
     reRead: boolean("re_read").default(false).notNull(),
     
     createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
 });
 
 

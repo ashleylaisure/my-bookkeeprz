@@ -1,0 +1,1 @@
+// data-table.tsx (client component) will contain our <DataTable /> component.

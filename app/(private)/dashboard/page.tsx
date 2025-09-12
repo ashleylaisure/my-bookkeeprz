@@ -1,3 +1,4 @@
+import Header from "@/components/navigation/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import ROUTES from "@/constants/routes";
@@ -13,23 +14,13 @@ export default async function DashboardPage() {
 
     return (
         <>
-            <header className="mb-8">
-                <div className="flex justify-between items-center">
-                    <div>
-                        <h1 className="text-3xl font-bold text-foreground">Reading Dashboard</h1>
-                        <p className="text-muted-foreground mt-1">Track your reading journey and discover insights</p>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                        <Button variant={"primary"} asChild>
-                            <Link href={ROUTES.ADD_BOOK}>
-                                <Plus className="mr-2" size={16} />
-                                Add Book
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
-            </header>
-
+            <Header
+                title="Reading Dashboard"
+                subtitle="Track your reading journey and discover insights"
+                href={ROUTES.ADD_BOOK}
+                buttonText="Add Book"
+            />
+            
             <Card>
                 <CardHeader>StatsOverview</CardHeader>
             </Card>

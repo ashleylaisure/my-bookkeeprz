@@ -14,6 +14,10 @@ export default function Navbar() {
                     <SidebarTrigger />
                     <BrandText />
                 </div>
+
+                <div className="flex-start">
+                    Breadcrumbs???
+                </div>
             )} */}
         </nav>
     )

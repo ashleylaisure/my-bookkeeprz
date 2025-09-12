@@ -1,14 +1,22 @@
-type BookStatus = "currently-reading" | "want-to-read" | "read" | "dnf";
+type BookStatus = "currently-reading" | "want-to-read"| "paused" | "read" | "dnf";
 
 interface Books {
     id: string;
-    coverUrl?: string;
+    userId: string;
     title: string;
-    author: string;
+    description?: string | null;
+    pageCount?: number | null;
+    audioHours?: number | null;
     genre: string;
-    reviews: number;
-    rating: number;
-    status: string;
+    coverUrl?: string | null;
+    status: BookStatus;
+    rating?: number | null;
+    dateStarted?: Date | null;
+    dateFinished?: Date | null;
+    currentPage?: number;
+    format: string;
+    notes?: string | null;
+    reRead?: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
