@@ -1,19 +1,18 @@
-import { pgTable, text, integer, timestamp, varchar, boolean, pgEnum, uuid } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, timestamp, varchar, boolean, pgEnum, uuid, numeric } from "drizzle-orm/pg-core";
 import { user } from "./auth";
-import { genreArray as _genreArray } from "@/constants";
 import { InferSelectModel, relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import z from "zod";
+import { genreValues } from "@/constants";
 
 
 // ---------------------------------------------
 // 1️⃣ ENUMS
 // ---------------------------------------------
-const genreArray = _genreArray as [string, ...string[]];
-export const genreEnum= pgEnum("genre", genreArray);
+export const genreEnum= pgEnum("genre", genreValues as [string, ...string[]]);
 
 export const statusEnum = pgEnum("status", [
-    "want_to_read",
+    "to_be_read",
     "currently_reading",
     "read",
     "paused",
@@ -41,13 +40,13 @@ export const book = pgTable("book", {
     genre: genreEnum("genre").notNull(),
     coverUrl: text("cover_url"),
 
-    status: statusEnum("status").default("want_to_read"),
-    rating: integer("rating"),
+    status: statusEnum("status").default("to_be_read").notNull(),
+    rating: numeric("rating", {precision: 3, scale: 2}).default("0"), // Changed to numeric to support decimal values like 4.5
     dateStarted: timestamp("date_started"),
     dateFinished: timestamp("date_finished"),
     currentPage: integer("current_page").default(0),
     format: formatEnum("format").default("physical_paperback"),
-    notes: text("notes"),
+    review: text("review"),
     reRead: boolean("re_read").default(false).notNull(),
     
     createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -74,27 +73,36 @@ const baseSchema = createInsertSchema(book, {
     description: (schema) => schema.optional().nullable(),
     pageCount: (schema) => schema.optional().nullable().refine((val) => val === undefined || val === null || val > 0, { message: "Page count must be greater than 0" }),
     audioHours: (schema) => schema.optional().nullable().refine((val) => val === undefined || val === null || val > 0, { message: "Audio hours must be greater than 0" }),
-    genre: (schema) => schema.refine((val) => genreArray.includes(val), { message: "Invalid genre" }),
+    // genre: (schema) => schema.refine((val) => genreValues.includes(val), { message: "Genre is required" }),
     coverUrl: (schema) => schema.optional().nullable(),
     status: (schema) => schema.optional(),
-    rating: (schema) => schema.optional().nullable().refine((val) => val === undefined || val === null || (val >= 1 && val <= 5), { message: "Rating must be between 1 and 5" }),
+    rating: (schema) => schema.optional().nullable().refine((val) => (Number(val) >= 0 && Number(val) <= 6), { message: "Rating must be between 0 and 6" }),
     dateStarted: (schema) => schema.optional().nullable(),
     dateFinished: (schema) => schema.optional().nullable(),
     currentPage: (schema) => schema.optional().refine((val) => val === undefined || val >= 0, { message: "Current page cannot be negative" }),
     format: (schema) => schema.optional(),
-    notes: (schema) => schema.optional().nullable(),
+    review: (schema) => schema.optional().nullable(),
     reRead: (schema) => schema.optional(),
 }).omit({ userId: true, createdAt: true, updatedAt: true });
 
 export const bookSchema = z.union([
     z.object({
         mode: z.literal("create"),
-        data: baseSchema,
+        data: baseSchema.extend({
+            genre: z
+                .string()
+                .nonempty({ message: "Genre is required" })
+                .refine((val) => genreValues.includes(val), { message: "Invalid genre selected" }),
+        })
     }),
     z.object({
         mode: z.literal("edit"),
         data: baseSchema.partial().extend({
             id: z.number().min(1, { message: "ID is required for editing" }),
+            genre: z
+                .string()
+                .nonempty({ message: "Genre is required" })
+                .refine((val) => genreValues.includes(val), { message: "Invalid genre selected" }),
         })
     })
 ])

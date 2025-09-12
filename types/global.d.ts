@@ -1,4 +1,4 @@
-type BookStatus = "currently-reading" | "want-to-read"| "paused" | "read" | "dnf";
+type BookStatus = "currently-reading" | "to-be-read"| "paused" | "read" | "dnf";
 
 interface Books {
     id: string;
@@ -10,12 +10,12 @@ interface Books {
     genre: string;
     coverUrl?: string | null;
     status: BookStatus;
-    rating?: number | null;
+    rating?: string | null;
     dateStarted?: Date | null;
     dateFinished?: Date | null;
     currentPage?: number;
     format: string;
-    notes?: string | null;
+    review?: string | null;
     reRead?: boolean;
     createdAt: Date;
     updatedAt: Date;
