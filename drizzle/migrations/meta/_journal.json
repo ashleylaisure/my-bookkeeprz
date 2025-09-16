@@ -15,6 +15,13 @@
       "when": 1757620454901,
       "tag": "0001_steady_the_captain",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757958711114,
+      "tag": "0002_flimsy_vindicator",
+      "breakpoints": true
     }
   ]
 }

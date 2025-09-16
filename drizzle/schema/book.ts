@@ -83,12 +83,15 @@ const baseSchema = createInsertSchema(book, {
     format: (schema) => schema.optional(),
     review: (schema) => schema.optional().nullable(),
     reRead: (schema) => schema.optional(),
-}).omit({ userId: true, createdAt: true, updatedAt: true });
+})
+    .omit({ userId: true, createdAt: true, updatedAt: true })
+    .refine((data) =>  !data.dateFinished || !data.dateStarted || data.dateFinished >= data.dateStarted, { message: "Date finished cannot be before date started", path: ["dateFinished"] })
+;
 
 export const bookSchema = z.union([
     z.object({
         mode: z.literal("create"),
-        data: baseSchema.extend({
+        data: baseSchema.safeExtend({
             genre: z
                 .string()
                 .nonempty({ message: "Genre is required" })

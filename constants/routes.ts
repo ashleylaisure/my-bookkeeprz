@@ -8,6 +8,7 @@ const ROUTES = {
     BOOK_DETAIL: (Id: string) => `/my_books/${Id}`,
     ADD_BOOK: 'add_book',
     AUTHORS: '/authors',
+    TAGS: (id: string) => `/tags/${id}`,
     BOOKSHELVES: '/bookshelves',
     SERIES: '/series',
     JOURNAL: '/journal',

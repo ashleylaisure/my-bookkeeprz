@@ -14,6 +14,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation";
 import EditBook from "../modals/book/EditBook";
 import DeleteBook from "../modals/book/DeleteBook";
+import ROUTES from "@/constants/routes";
 
 interface BooksTableProps {
     books: Books[]
@@ -40,7 +41,7 @@ export default function BooksTable({ books }: BooksTableProps) {
                 </TableHeader>
                 <TableBody>
                     {books.map((book) => (
-                        <TableRow key={book.id} onClick={() => router.push(`/books/${book.id}`)} className="cursor-pointer hover:bg-gray-50">
+                        <TableRow key={book.id} onClick={() => router.push(ROUTES.BOOK_DETAIL(book.id))} className="cursor-pointer hover:bg-gray-50">
                             <TableCell className="font-medium">{book.title}</TableCell>
                             <TableCell>{book.genre}</TableCell>
                             <TableCell>{book.status}</TableCell>

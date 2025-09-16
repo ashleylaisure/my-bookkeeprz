@@ -1,13 +1,15 @@
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/navigation/Header";
+import ROUTES from "@/constants/routes";
+import DeleteBook from "@/components/modals/book/DeleteBook";
 type RouteParams = {
   // Example: if your route is /books/[id]
     id: string;
@@ -34,7 +36,7 @@ const BookDetailsPage = async ({params}: {params: RouteParams}) => {
             <Header 
                 title="Book Details"
                 subtitle="Detailed view of the selected book."
-                href="/books"
+                href={ROUTES.MY_BOOKS}
                 buttonText="Back to Books List"
             />
             <Card className="max-w">
@@ -59,6 +61,7 @@ const BookDetailsPage = async ({params}: {params: RouteParams}) => {
                             <Badge>{book.genre}</Badge>
                             <CardDescription>Rating: {book.rating}</CardDescription>
                             <CardDescription>{book.format}</CardDescription>
+                            {/* <DeleteBook book={book.id} /> */}
                         </CardContent>
                     </div>
                 </div>

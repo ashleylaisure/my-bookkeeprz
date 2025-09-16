@@ -1,0 +1,14 @@
+ALTER TABLE "book" RENAME COLUMN "notes" TO "review";--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "genre" SET DATA TYPE text;--> statement-breakpoint
+DROP TYPE "public"."genre";--> statement-breakpoint
+CREATE TYPE "public"."genre" AS ENUM('action_thriller', 'action_adventure_fiction', 'apocalyptic_sci_fi', 'art_photography', 'autobiography_memoir', 'biography', 'body_horror', 'caper', 'childrens_fiction', 'classic_fiction', 'colonization_sci_fi', 'comedy_horror', 'conspiracy_thriller', 'contemporary_fiction', 'contemporary_romance', 'cozy_mystery', 'dark_fantasy', 'dark_romance', 'disaster_thriller', 'erotic_romance', 'espionage_thriller', 'essays', 'fairy_tales', 'fantasy', 'fantasy_romance_romantasy', 'folktales', 'food_drink', 'forensic_thriller', 'gothic_horror', 'gothic_romance', 'graphic_novel', 'gumshoe_detective_mystery', 'hard_sci_fi', 'heroic_fantasy', 'high_fantasy', 'historical_fantasy', 'historical_fiction', 'historical_mystery', 'historical_romance', 'historical_thriller', 'history', 'horror', 'howdunnits', 'how_to_guides', 'humanities_social_sciences', 'humor', 'legal_thriller', 'lgbtq', 'literary_fiction', 'locked_room_mystery', 'lovecraftian_cosmic_horror', 'low_fantasy', 'magical_realism', 'military_sci_fi', 'mind_uploading_sci_fi', 'mystery', 'mythic_fantasy', 'new_adult', 'noir', 'parallel_world_sci_fi', 'paranormal_horror', 'paranormal_romance', 'paranormal_thriller', 'parenting', 'philosophy', 'post_apocalyptic_horror', 'procedural_hard_boiled_mystery', 'psychological_horror', 'psychological_thriller', 'quiet_horror', 'regency', 'religion_spirituality', 'religious_thriller', 'romance', 'romantic_comedy', 'romantic_suspense', 'satire', 'science_technology', 'science_fiction', 'sci_fi_romance', 'self_help', 'short_story', 'slasher', 'soft_sci_fi', 'space_opera', 'space_western', 'steampunk', 'supernatural_mystery', 'thriller', 'travel', 'true_crime', 'urban_fantasy', 'western', 'womens_fiction', 'young_adult');--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "genre" SET DATA TYPE "public"."genre" USING "genre"::"public"."genre";--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "status" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "status" SET DEFAULT 'to_be_read'::text;--> statement-breakpoint
+DROP TYPE "public"."status";--> statement-breakpoint
+CREATE TYPE "public"."status" AS ENUM('to_be_read', 'currently_reading', 'read', 'paused', 'dnf');--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "status" SET DEFAULT 'to_be_read'::"public"."status";--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "status" SET DATA TYPE "public"."status" USING "status"::"public"."status";--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "status" SET NOT NULL;--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "rating" SET DATA TYPE numeric(3, 2);--> statement-breakpoint
+ALTER TABLE "book" ALTER COLUMN "rating" SET DEFAULT '0';

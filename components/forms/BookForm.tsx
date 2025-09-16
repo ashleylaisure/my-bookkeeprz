@@ -539,7 +539,7 @@ const BookForm = () => {
                             />
                         </div>
                         <div className="col-span-2">
-                            {/* NOTES */}
+                            {/* Review */}
                             <FormField
                                 control={form.control}
                                 name="review"
@@ -575,9 +575,10 @@ const BookForm = () => {
                     <Button
                         type="submit"
                         // disabled={createBookMutation.isPending}
+                        className="primary-gradient w-fit !text-light-900"
                     >
                         {/* {createBookMutation.isPending ? "Adding..." : "Add Book"} */}
-                        Add Book
+                        Add A Book
                     </Button>
                 </div>
             </form>

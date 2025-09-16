@@ -1,9 +1,10 @@
 import Header from "@/components/navigation/Header";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import ROUTES from "@/constants/routes";
 import { Plus } from "lucide-react";
 import Link from "next/link";
+import PopularTags from "./components/PopularTags";
 
 export const metadata = {
     title: "Dashboard",
@@ -40,6 +41,12 @@ export default async function DashboardPage() {
                 </Card>
                 <Card>
                     <CardHeader>RatingDistribution</CardHeader>
+                </Card>
+                <Card>
+                    <CardHeader>Popular Tags</CardHeader>
+                    <CardContent>
+                        <PopularTags />
+                    </CardContent>
                 </Card>
             </section>
 

@@ -14,8 +14,9 @@ const StatusFilter = ({books}: {books: Books[]}) => {
 
     const booksByStatus: Record<BookStatus, Books[]> = {
         "currently-reading": books?.filter((book) => book.status === "currently-reading") || [],
-        "want-to-read": books?.filter((book) => book.status === "want-to-read") || [],
+        "to-be-read": books?.filter((book) => book.status === "to-be-read") || [],
         "read": books?.filter((book) => book.status === "read") || [],
+        "paused": books?.filter((book) => book.status === "paused") || [],
         "dnf": books?.filter((book) => book.status === "dnf") || [],
     };
 

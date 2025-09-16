@@ -1,5 +1,9 @@
 type BookStatus = "currently-reading" | "to-be-read"| "paused" | "read" | "dnf";
 
+// Interface for Author
+
+// Interface for Bookshelf
+
 interface Books {
     id: string;
     userId: string;
